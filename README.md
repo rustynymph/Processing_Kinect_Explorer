@@ -48,9 +48,10 @@ This is a [Processing](https://processing.org/) project that interfaces with a K
     * Download [OpenNI SDK (V1.5.7.10)](https://mega.nz/#!yJwg1DJS!uJiLY4180QGXjKp7sze8S3eDVU71NHiMrXRq0TA7QpU)
         * Do not download OpenNI v2 beta, it relies on the Microsoft Kinect SDK which we cannot use
     * Move the zip file you just downloaded into your Kinect folder and uncompress it
+    * Rename the uncompressed folder to "OpenNI" (optional)
     * Open Terminal
-    * Type `cd ~/Kinect` and press ENTER
-    * Type `cd OpenNI` and press TAB, then press ENTER (the filename is long and pressing TAB lets Terminal autocomplete the rest of the directory name)
+    * Type `cd ~/Kinect/OpenNI` and press ENTER (change filepath names where necessary)
+        * TIP: we will be using the `cd` command several times in this tutorial, if you'd like you can simply drag your folder from finder into your Terminal window and then press ENTER
     * Type `sudo ./install.sh` and press ENTER
 5. Download and install SensorKinect
     * Open Terminal
@@ -59,12 +60,30 @@ This is a [Processing](https://processing.org/) project that interfaces with a K
     * Go to [https://github.com/avin2/SensorKinect](https://github.com/avin2/SensorKinect) 
         * Click the green `Clone or download` button and select `Download Zip`
     * Move the downloaded zip to your Kinect folder in your home directory and uncompress it
-      * Rename the folder to "SensorKinect" if it isn't that already
+      * Rename the uncompressed folder to "SensorKinect" (optional)
     * Inside of the SensorKinect folder, open the Bin folder
     * Uncompress the file SensorKinect093-Bin-MacOSX-v5.1.2.1.tar.bz2
     * Open Terminal
-    * Type `cd ~/Kinect/SensorKinect/SensorKinect093-Bin-MacOSX-v5.1.2.1`
+    * Type `cd ~/Kinect/SensorKinect/SensorKinect093-Bin-MacOSX-v5.1.2.1` (change filepath names where necessary)
     * Type `sudo ./install.sh`
         * If this step worked properly it should have installed the Primesense sensor as well
 6. Install NiTE
-    
+    * Download [NITE-Bin-MacOSX-v1.5.2.21.tar.zip](https://onedrive.live.com/?cid=33B0FE678911B037&id=33B0FE678911B037%21573&parId=33B0FE678911B037%21574&action=locate)
+    * Move this file to your Kinect folder and uncompress it
+    * Rename the uncompressed folder to "NiTE" (optional)
+    * Open Terminal
+    * Type `cd ~/Kinect/NiTE` and press ENTER (change filepath names where necessary)
+    * Type `sudo ./install.sh` and press ENTER
+7. Test
+    * Plug in and power on your Kinect
+    * Copy the sample XML files from NiTE/Data over to the Data folder in SensorKinect
+    * Open Terminal
+    * Type `cd ~/Kinect/NiTE/Samples/Bin/x64-Release` and press ENTER
+    * Type `./Sample-PointViewer` and press ENTER to run the demo
+        * If every step in this guide was successful you should see a tracking demo
+8. Enable System Integrity Proctection (Optional)
+    * Earlier we disabled System Integrity Protection, follow these steps to re-enable it
+    * Restart Mac in recovery mode
+    * Find Terminal in the Utilies menu
+    * Type `csrutil enable` and press ENTER
+    * Restart your Mac
