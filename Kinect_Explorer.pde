@@ -3,7 +3,7 @@ import processing.opengl.*; // For implementing edge detection
 import codeanticode.syphon.*; // For using syphon to send frames out
 
 SimpleOpenNI kinect;
-SobelEdgeDetection sobel;
+SobelEdgeDetection sobel; // edge detection algorithm implemented by http://www.pages.drexel.edu/~weg22/edge.html
 SyphonServer server;
 PImage kinectImage;
 boolean sendFrames = false;
@@ -21,6 +21,8 @@ color[]       userClr = new color[]{ color(255,0,0),
                                    };
 PVector com = new PVector();                                   
 PVector com2d = new PVector(); 
+String text;
+String syphonStatus;
 
 void settings(){
   size(640, 480, P2D);
@@ -46,16 +48,22 @@ void setup(){
 void draw(){
   kinect.update();
   
+  fill(255);
   if (rgbEnabled){
     kinectImage = kinect.rgbImage();
+    text = "RGB mode";
   }
   if (depthEnabled){
     kinectImage = kinect.depthImage();
-    if (colorDepthEnabled){
-      changeDepthColor(kinectImage);
-    }
-  } 
+    text = "Depth mode (grayscale)";
+  }
+  if (colorDepthEnabled){
+    kinectImage = kinect.depthImage();
+    changeDepthColor(kinectImage);
+    text = "Depth mode (color)";
+  }
   if (userSkeletonTrackingEnabled){
+    text = "User skeleton tracking mode";
     kinectImage = kinect.userImage();
     // draw the skeleton if it's available
     int[] userList = kinect.getUsers();
@@ -88,12 +96,23 @@ void draw(){
   }
   if (edgesEnabled){
     kinectImage = getEdges(kinectImage);
+    fill(150);
+    text = "Edge detection (press 'e' to toggle)";
   }
-  image(kinectImage, 0, 0, width, height);
-  
   if (sendFrames){
     server.sendScreen();
+    syphonStatus = "Sending frames via Syphon";
   }
+  else {
+    syphonStatus = "";
+  }  
+  
+  image(kinectImage, 0, 0, width, height);
+  textSize(32);
+  text(text, 10, 30);  
+  text(syphonStatus, 10, 60);  
+  
+
 }
 
 // draw the skeleton with the selected joints
@@ -163,23 +182,30 @@ void keyPressed(){
     depthEnabled = true;
     rgbEnabled = false;
     userSkeletonTrackingEnabled = false;
+    colorDepthEnabled = false;
   }
   else if (key =='r' || key == 'R'){
     rgbEnabled = true;
     depthEnabled = false;
     userSkeletonTrackingEnabled = false;
+    colorDepthEnabled = false;
   }
   else if (key == 'u' || key == 'U'){
     userSkeletonTrackingEnabled = true;   
     rgbEnabled = false;
     depthEnabled = false; 
+    colorDepthEnabled = false;
   }
+  else if (key == 'c' || key == 'C'){
+    colorDepthEnabled = true;
+    rgbEnabled = false;
+    depthEnabled = false;
+    userSkeletonTrackingEnabled = false;    
+  }  
   else if (key == 'e' || key == 'E'){
     edgesEnabled = !edgesEnabled;
   }
-  else if (key == 'c' || key == 'C'){
-    colorDepthEnabled = !colorDepthEnabled;
-  }
+
 }
 
 // SimpleOpenNI events
