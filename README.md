@@ -1,6 +1,8 @@
 # Kinect Explorer for Processing
 
-This is a [Processing](https://processing.org/) project that interfaces with a Kinect v1 and contains a series of keyboard events that enable/disable different options and methods of Processing's OpenKinect library. 
+This is a [Processing](https://processing.org/) project that interfaces with a Kinect v1 and contains a series of keyboard events that enable/disable different options and methods of the SimpleOpenNI library -- such as the RGB camera, depth camera, and user skeleton tracking.
+
+[SimpleOpenNI](http://openni.ru/files/simpleopenni/index.html) is a wrapper around [OpenNI](https://en.wikipedia.org/wiki/OpenNI) and NiTE for Processing. While this project utilizes the SimpleOpenNI library to use Processing to interface with a Kinect, you might also want to check out the [OpenKinect](http://shiffman.net/p5/kinect/) library. It is better documented and a little more friendly to beginners, however I decided to go with SimpleOpenNI because of their methods they have for skeleton tracking.
 
 ## What you need  
 * A Kinect
@@ -9,22 +11,23 @@ This is a [Processing](https://processing.org/) project that interfaces with a K
 * [A Kinect AC Adapter/Power Supply](https://www.amazon.com/gp/product/B004IXRXGY/ref=oh_aui_detailpage_o02_s00?ie=UTF8&psc=1)
 * [Processing](https://processing.org/) (Note: this project has only been built and tested on Processing 3.2.3)
 * The following Processing libraries
-    * Open Kinect Processing library 
+    * SimpleOpenNI library 
+        * This can be installed in Processing by simply going to `Sketch --> Import Library... --> Add Library...` and then searching for "SimpleOpenNI". Click install.
+        * If you are using Processing 3 and above, then the above download will not work. There are 2 ways to fix this:
+            * Downgrade your version of Processing
+            * Follow the instructions [here](https://www.toomanybees.com/storytime/simple-open-ni) to get the library working with Processing 3
     * Syphon Processing library
-    * These libraries can be installed in Processing by going to `Sketch --> Import Library.. --> Add Library...` and then searching for "Open Kinect" and then "Syphon". Click install for each of these.
+        * This can be installed in Processing by simply going to `Sketch --> Import Library... --> Add Library...` and then searching for "Syphon". Click install.
     
 ## How to use
 * Make sure your Kinect is powered on and plugged into a USB port
 * Run this Processing project
 * You can play around by using the following key commands
-    * `up arrow key`: increases tilt of the Kinect (Kinect v1 only)
-    * `down arrow key`: decreases tilt of the Kinect (Kinect v1 only)
-    * `r`: toggles rgb camera (normal video feed)
-    * `d`: toggles depth camera
+    * `r`: enables RGB camera (normal video feed, disables depth camera)
+    * `d`: enables depth camera (disables RGB camera)
+    * `u`: enables depth and skeleton tracking (disables RGB camera and depth camera)
     * `c`: toggles depth camera color
-    * `i`: toggles IR
     * `e`: toggles edge detection
-    * `m`: toggles mirroring
     * `s`: toggles sending frames via a [Syphon](http://syphon.v002.info/) server (OSX only)
     
 ## Getting your Kinect to work on OSX (instructions based on [this guide](https://creativevreality.wordpress.com/2016/01/26/setting-up-the-kinect-on-osx-el-capitan/))
