@@ -17,8 +17,8 @@ This is a [Processing](https://processing.org/) project that interfaces with a K
 * Make sure your Kinect is powered on and plugged into a USB port
 * Run this Processing project
 * You can play around by using the following key commands
-    * `up arrow key`:
-    * `down arrow key`:
+    * `up arrow key`: increases tilt of the Kinect (Kinect v1 only)
+    * `down arrow key`: decreases tilt of the Kinect (Kinect v2 only)
     * `r`: toggles rgb camera (normal video feed)
     * `d`: toggles depth camera
     * `c`: toggles depth camera color
