@@ -18,7 +18,7 @@ This is a [Processing](https://processing.org/) project that interfaces with a K
 * Run this Processing project
 * You can play around by using the following key commands
     * `up arrow key`: increases tilt of the Kinect (Kinect v1 only)
-    * `down arrow key`: decreases tilt of the Kinect (Kinect v2 only)
+    * `down arrow key`: decreases tilt of the Kinect (Kinect v1 only)
     * `r`: toggles rgb camera (normal video feed)
     * `d`: toggles depth camera
     * `c`: toggles depth camera color
@@ -26,3 +26,45 @@ This is a [Processing](https://processing.org/) project that interfaces with a K
     * `e`: toggles edge detection
     * `m`: toggles mirroring
     * `s`: toggles sending frames via a [Syphon](http://syphon.v002.info/) server (OSX only)
+    
+#### Getting your Kinect to work on OSX (instructions based on [this guide](https://creativevreality.wordpress.com/2016/01/26/setting-up-the-kinect-on-osx-el-capitan/))
+1. Disable System Integrity Proctection
+    * Restart your Mac in Recovery mode (while your Mac is restarting hold Cmd-R)
+    * In the Utilities menu select Terminal
+    * Type `csrutil disable` and press ENTER
+    * Restart your Mac
+2. Download and install MacPorts
+    * [http://www.macports.org/install.php](http://www.macports.org/install.php)
+3. Install dependencies
+    * Open Terminal
+    * Type `sudo port install libtool` and press ENTER
+    * Restart your Mac
+    * Open Terminal
+    * Type `sudo port install libusb-devel +universal` and press ENTER
+    * Restart your Mac again...
+4. Download and install OpenNI
+    * Open Terminal
+    * Type `mkdir ~/Kinect` and press enter (this creates a folder named Kinect in your Home directory)
+    * Download [OpenNI SDK (V1.5.7.10)](https://mega.nz/#!yJwg1DJS!uJiLY4180QGXjKp7sze8S3eDVU71NHiMrXRq0TA7QpU)
+        * Do not download OpenNI v2 beta, it relies on the Microsoft Kinect SDK which we cannot use
+    * Move the zip file you just downloaded into your Kinect folder and uncompress it
+    * Open Terminal
+    * Type `cd ~/Kinect` and press ENTER
+    * Type `cd OpenNI` and press TAB, then press ENTER (the filename is long and pressing TAB lets Terminal autocomplete the rest of the directory name)
+    * Type `sudo ./install.sh` and press ENTER
+5. Download and install SensorKinect
+    * Open Terminal
+    * Type `sudo ln -s /usr/local/bin/niReg /usr/bin/niReg` and press ENTER
+        * If that fails, try `sudo ln -s /usr/bin/niReg /usr/local/bin/niReg` instead
+    * Go to [https://github.com/avin2/SensorKinect](https://github.com/avin2/SensorKinect) 
+        * Click the green `Clone or download` button and select `Download Zip`
+    * Move the downloaded zip to your Kinect folder in your home directory and uncompress it
+      * Rename the folder to "SensorKinect" if it isn't that already
+    * Inside of the SensorKinect folder, open the Bin folder
+    * Uncompress the file SensorKinect093-Bin-MacOSX-v5.1.2.1.tar.bz2
+    * Open Terminal
+    * Type `cd ~/Kinect/SensorKinect/SensorKinect093-Bin-MacOSX-v5.1.2.1`
+    * Type `sudo ./install.sh`
+        * If this step worked properly it should have installed the Primesense sensor as well
+6. Install NiTE
+    
