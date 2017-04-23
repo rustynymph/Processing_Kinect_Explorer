@@ -4,6 +4,8 @@ This is a [Processing](https://processing.org/) project that interfaces with a K
 
 [SimpleOpenNI](http://openni.ru/files/simpleopenni/index.html) is a wrapper around [OpenNI](https://en.wikipedia.org/wiki/OpenNI) and NiTE for Processing. While this project utilizes the SimpleOpenNI library to use Processing to interface with a Kinect, you might also want to check out the [OpenKinect](http://shiffman.net/p5/kinect/) library. It is better documented and a little more friendly to beginners, however I decided to go with SimpleOpenNI because of their methods they have for skeleton tracking.
 
+This project also contains slightly modified code from [Ian Gorse](https://www.openprocessing.org/sketch/2301) to perform [Sobel edge detection](https://en.wikipedia.org/wiki/Sobel_operator). 
+
 ## What you need  
 * A Kinect
     * There are some methods in this project that will only work for Kinect v1, but if you are using v2 it should be easy to change. Check out [http://shiffman.net/p5/kinect/](http://shiffman.net/p5/kinect/) to see the slight differences between the two versions.
