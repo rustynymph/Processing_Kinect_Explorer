@@ -1,5 +1,5 @@
+import SimpleOpenNI.*; // For interfacing with the Kinect
 import processing.opengl.*; // For implementing edge detection
-import SimpleOpenNI.*;
 import codeanticode.syphon.*; // For using syphon to send frames out
 
 SimpleOpenNI kinect;
@@ -45,13 +45,15 @@ void setup(){
 
 void draw(){
   kinect.update();
-  kinect.setDepthToColor(colorDepthEnabled);
   
   if (rgbEnabled){
     kinectImage = kinect.rgbImage();
   }
   if (depthEnabled){
     kinectImage = kinect.depthImage();
+    if (colorDepthEnabled){
+      changeDepthColor(kinectImage);
+    }
   } 
   if (userSkeletonTrackingEnabled){
     kinectImage = kinect.userImage();
@@ -119,6 +121,32 @@ void drawSkeleton(int userId)
   kinect.drawLimb(userId, SimpleOpenNI.SKEL_TORSO, SimpleOpenNI.SKEL_RIGHT_HIP);
   kinect.drawLimb(userId, SimpleOpenNI.SKEL_RIGHT_HIP, SimpleOpenNI.SKEL_RIGHT_KNEE);
   kinect.drawLimb(userId, SimpleOpenNI.SKEL_RIGHT_KNEE, SimpleOpenNI.SKEL_RIGHT_FOOT);  
+}
+
+void changeDepthColor(PImage img){
+  int depth;
+  int[] depthMap = kinect.depthMap();
+  img.loadPixels();
+  for (int i = 0; i < depthMap.length; i++){
+    depth = depthMap[i];
+    if (depth > 0 && depth < 600){ // close to Kinect
+       img.pixels[i] = color(255, 114, 247); 
+    }
+    else if (depth >= 600 && depth < 1000){
+      img.pixels[i] = color(255, 184, 113); 
+    }
+    else if (depth >= 1000 && depth < 1400){
+      img.pixels[i] = color(176, 255, 113); 
+    }
+    else if (depth >= 1400 && depth < 2000){
+       img.pixels[i] = color(86, 179, 255); 
+    }
+    else if (depth >= 2000){ // far from Kinect
+      img.pixels[i] = color(143, 113, 255);
+    }
+  }
+  img.updatePixels();
+  
 }
 
 PImage getEdges(PImage img){
