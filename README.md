@@ -2,7 +2,7 @@
 
 This is a [Processing](https://processing.org/) project that interfaces with a Kinect v1 and contains a series of keyboard events that enable/disable different options and methods of Processing's OpenKinect library. 
 
-#### What you need  
+### What you need  
 * A Kinect
     * There are some methods in this project that will only work for Kinect v1, but if you are using v2 it should be easy to change. Check out [http://shiffman.net/p5/kinect/](http://shiffman.net/p5/kinect/) to see the slight differences between the two versions.
     * If you are wondering if you can use a Kinect and this project with OSX the answer is YES. See below for a list of instructions for getting this set up.
@@ -13,7 +13,7 @@ This is a [Processing](https://processing.org/) project that interfaces with a K
     * Syphon Processing library
     * These libraries can be installed in Processing by going to `Sketch --> Import Library.. --> Add Library...` and then searching for "Open Kinect" and then "Syphon". Click install for each of these.
     
-#### How to use
+### How to use
 * Make sure your Kinect is powered on and plugged into a USB port
 * Run this Processing project
 * You can play around by using the following key commands
@@ -27,7 +27,7 @@ This is a [Processing](https://processing.org/) project that interfaces with a K
     * `m`: toggles mirroring
     * `s`: toggles sending frames via a [Syphon](http://syphon.v002.info/) server (OSX only)
     
-#### Getting your Kinect to work on OSX (instructions based on [this guide](https://creativevreality.wordpress.com/2016/01/26/setting-up-the-kinect-on-osx-el-capitan/))
+### Getting your Kinect to work on OSX (instructions based on [this guide](https://creativevreality.wordpress.com/2016/01/26/setting-up-the-kinect-on-osx-el-capitan/))
 1. Disable System Integrity Proctection
     * Restart your Mac in Recovery mode (while your Mac is restarting hold Cmd-R)
     * In the Utilities menu select Terminal
