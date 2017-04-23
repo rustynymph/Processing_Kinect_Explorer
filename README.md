@@ -2,6 +2,8 @@
 
 This is a [Processing](https://processing.org/) project that interfaces with a Kinect v1 and contains a series of keyboard events that enable/disable different options and methods of the SimpleOpenNI library -- such as the RGB camera, depth camera, and user skeleton tracking.
 
+Additionally, I have added the option for users toggle whether or not to pipe their live video feed via a [Syphon](http://syphon.v002.info/) server. Syphon is an open-source OSX technology that allows applications to share frames in real-time.
+
 [SimpleOpenNI](http://openni.ru/files/simpleopenni/index.html) is a wrapper around [OpenNI](https://en.wikipedia.org/wiki/OpenNI) and NiTE for Processing. While this project utilizes the SimpleOpenNI library to use Processing to interface with a Kinect, you might also want to check out the [OpenKinect](http://shiffman.net/p5/kinect/) library. It is better documented and a little more friendly to beginners, however I decided to go with SimpleOpenNI because of their methods they have for skeleton tracking.
 
 This project also contains slightly modified code from [Ian Gorse](https://www.openprocessing.org/sketch/2301) to perform [Sobel edge detection](https://en.wikipedia.org/wiki/Sobel_operator). 
