@@ -53,7 +53,7 @@ This is a [Processing](https://processing.org/) project that interfaces with a K
     * Type `cd ~/Kinect/OpenNI` and press ENTER (change filepath names where necessary)
         * TIP: we will be using the `cd` command several times in this tutorial, if you'd like you can simply drag your folder from finder into your Terminal window and then press ENTER
     * Type `sudo ./install.sh` and press ENTER
-5. Download and install SensorKinect
+#### 5. Download and install SensorKinect
     * Open Terminal
     * Type `sudo ln -s /usr/local/bin/niReg /usr/bin/niReg` and press ENTER
         * If that fails, try `sudo ln -s /usr/bin/niReg /usr/local/bin/niReg` instead
